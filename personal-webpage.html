@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rose Guevarra - Personal Website</title>
+  <style>
+    :root {
+      --bg-color: #f8f4ff;       /* very light lavender */
+      --primary: #6a0dad;        /* deep purple */
+      --secondary: #b388eb;      /* soft lavender */
+      --text-color: #2c003e;     /* dark purple text */
+      --accent: #9d4edd;         /* medium purple */
+      --card-bg: #ede7f6;        /* light purple */
+      --gradient: linear-gradient(135deg, #b388eb, #6a0dad);
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    /* Navbar */
+    nav.navbar {
+      background: var(--gradient);
+      padding: 1rem;
+      box-shadow: 0 4px 10px rgba(106, 13, 173, 0.5);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    /* underline animation */
+    .nav-links li a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      left: 0;
+      bottom: -4px;
+      background: #fff;
+      transition: 0.3s;
+    }
+
+    .nav-links li a:hover::after {
+      width: 100%;
+    }
+
+    .section {
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: auto;
+      animation: fadeIn 1s ease;
+    }
+
+    /* fade in animation */
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* Home Section */
+    .home-flex {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 30px;
+      background: var(--gradient);
+      padding: 30px;
+      border-radius: 20px;
+      color: white;
+      box-shadow: 0 6px 18px rgba(106, 13, 173, 0.6);
+      transition: transform 0.3s ease;
+    }
+
+    .home-flex:hover {
+      transform: translateY(-8px);
+    }
+
+    .home-flex img {
+      border-radius: 20px;
+      width: 250px;
+      object-fit: cover;
+      box-shadow: 0 6px 15px rgba(106, 13, 173, 0.7);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .home-flex img:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 20px #b388eb;
+    }
+
+    h2 {
+      color: var(--primary);
+      border-bottom: 2px solid var(--secondary);
+      padding-bottom: 5px;
+      letter-spacing: 1px;
+    }
+
+    blockquote {
+      font-style: italic;
+      color: var(--primary);
+      background: var(--card-bg);
+      padding: 12px 18px;
+      border-left: 5px solid var(--accent);
+      margin: 20px 0;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(106, 13, 173, 0.2);
+    }
+
+    /* Gallery */
+    .gallery img {
+      width: 110px;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin: 6px;
+      box-shadow: 0 4px 12px rgba(106, 13, 173, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.12);
+      box-shadow: 0 0 15px #9d4edd;
+    }
+
+    /* Portfolio */
+    .portfolio table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(106, 13, 173, 0.3);
+    }
+
+    .portfolio td {
+      padding: 20px;
+      text-align: center;
+      border: 1px solid #d1c4e9;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .portfolio td:hover {
+      background: #d1c4e9;
+      transform: scale(1.05);
+    }
+
+    /* Portfolio links as gradient buttons */
+    .portfolio a {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 8px;
+      background: var(--gradient);
+      color: #fff;
+      font-weight: bold;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .portfolio a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(106, 13, 173, 0.5);
+    }
+
+    /* Links */
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--primary);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: var(--gradient);
+      color: #fff;
+      margin-top: 40px;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      box-shadow: 0 -2px 8px rgba(106, 13, 173, 0.4);
+    }
+
+    @media (max-width: 768px) {
+      .home-flex {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .nav-links {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Home Section -->
+  <main>
+    <section id="home" class="section home-flex">
+      <div>
+        <h2>Welcome to My Personal Website</h2>
+        <p>I am Rose Guevarra, a Grade 12 student currently taking the Programming strand. I love technology and I enjoy learning how to build websites and applications.</p>
+      
+        <blockquote>"No matter how hard or impossible it is, never lose sight of your goal." — Monkey D. Luffy</blockquote>
+      </div>
+      <img src=" myphoto.png" alt="My Photo">
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      <h2>About Me</h2>
+      <p>I enjoy simple hobbies like playing guitar, listening to music, and being creative.</p>
+      <ul>
+        <li>HTML & CSS</li>
+        <li>Java Programming</li>
+      </ul>
+      <p>I also enjoy spending time with my family, friends, and watching anime during my free time.</p>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section gallery">
+      <h2>Gallery</h2>
+      <p>Meet my wifey.💖</p>
+      <div>
+        <img src="anime5.png" alt="">
+        <img src="anime5.png" alt="">
+        <img src="windbreaker.png" alt="">
+        <img src="anime3.png" alt="">
+        <img src=" anime2.png" alt="">
+        <img src="anime1.png" alt="">
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section portfolio">
+      <h2>My Portfolio</h2>
+      <table>
+        <tr>
+          <td><strong>Performance Task 1</strong><br><br><a href="tasks/task1.html" target="_blank">View Task</a></td>
+          <td><strong>Performance Task 2</strong><br><br><a href="tasks/task2.html" target="_blank">View Task</a></td>
+        </tr>
+        <tr>
+          <td><strong>Performance Task 3</strong><br><br><a href="tasks/task3.html" target="_blank">View Task</a></td>
+          <td><strong>Performance Task 4</strong><br><br><a href="tasks/task4.html" target="_blank">View Task</a></td>
+        </tr>
+        <tr>
+          <td><strong>Performance Task 5</strong><br><br><a href="tasks/task5.html" target="_blank">View Task</a></td>
+          <td><strong>Performance Task 6</strong><br><br><a href="tasks/task6.html" target="_blank">View Task</a></td>
+        </tr>
+        <tr>
+          <td><strong>Performance Task 7</strong><br><br><a href="tasks/task7.html" target="_blank">View Task</a></td>
+          <td><strong>Performance Task 8</strong><br><br><a href="tasks/task8.html" target="_blank">View Task</a></td>
+        </tr>
+        <tr>
+          <td><strong>Performance Task 9</strong><br><br><a href="tasks/task9.html" target="_blank">View Task</a></td>
+          <td><strong>Performance Task 10</strong><br><br><a href="tasks/task10.html" target="_blank">View Task</a></td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <p>Let’s stay connected — I don’t haunt, I respond.</p>
+      <div>
+        <p> <alt=""> 09541599745</p>
+        <p><alt=""> <a href="https://www.facebook.com/roseiii.akm">Facebook</a></p>
+        <p><alt=""> <a href="https://www.instagram.com/akxmiea/profilecard/?igsh=MWxmb2t3d2JjZmdhdw==">Instgram</a></p>
+        <p><alt=""> <a href="mailto:rosemarieguevarra083@gmail.com">Email</a></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Rose Guevarra. All rights reserved.</p>
+  </footer>
+</body>
+</html>
